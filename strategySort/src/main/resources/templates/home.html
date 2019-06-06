@@ -1,0 +1,39 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<h1>Strategy Sorting App</h1>
+<p>Upload your file and it will be sorted using the most efficient sorting algorithm.</p>
+<p>Your file must have the following attributes:
+<ol style="margin-top:-10px;">
+
+    <li>Smaller than .... MB</li>
+
+    <li>A CSV file with no new line characters (i.e. the data is one big log row)</li>
+
+</ol>
+</p>
+<p><b>If your file is all numbers then all values will be treated as such.</b><br />
+<b>If there are any characters in your file then all values will be treated as characters.</b></p>
+
+<div>
+    <p>Select any of the following attributes that apply to your file:<br />
+    <input type="checkbox" name=”checkboxinput” value="Small File" /> File smaller than ...MB<br />
+    <input type="checkbox" name=”checkboxinput2” value="File Mostly Sorted" /> File is mostly sorted already<br />
+    </p>
+</div>
+
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/returnSortedList">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
